@@ -1,6 +1,8 @@
+const doc = document;
+
 const playSound = (e) => {
-  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  const audio = doc.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = doc.querySelector(`.key[data-key="${e.keyCode}"]`);
   if (!audio) return;
   audio.currentTime = 0 // rewinds to start of audio to allow for playing in quick succession
   audio.play();
@@ -12,7 +14,7 @@ const removeTransition = (e) => {
   e.target.classList.remove('playing');
 }
 
-const keys = document.querySelectorAll('.key');
+const keys = doc.querySelectorAll('.key');
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 window.addEventListener('keydown', playSound); 
 
